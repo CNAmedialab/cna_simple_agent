@@ -1,0 +1,38 @@
+{
+    "chiming": {
+        "vector_store_id": "vs_685a0e4a0b048191a0e1e6148b33d6ec",
+        "file_id": "file-4vV7XL2Su5Gpg9HghoSZx4"
+    },
+    "CNA": {
+        "vector_store_id": "vs_68677e19e990819197f87cb4169a9daa",
+        "file_id": "file-2QxrXV2d13aq4nxf4GXwZT"
+    },
+    "CNA-medialab": {
+        "vector_store_id": "vs_68677da0d78c8191983c65e4c066f6b1",
+        "file_id": "file-HCNeJyQTgP7oYMgAXH34Pc"
+    },
+    "CNA-digi": {
+        "vector_store_id": "vs_686776eea1948191908a1df037a691b0",
+        "file_id": "file-ABEPzezsLie6oEkcg21vWj"
+    },
+    "CNA-foreign": {
+        "vector_store_id": "vs_6867773e69f88191bb84e8ec99ae6d8f",
+        "file_id": "file-Fg5A3J6EyJ4pmCqF3n62Dh"
+    },
+    "CNA-local": {
+        "vector_store_id": "vs_68677797a9a88191afe2d17965370e92",
+        "file_id": "file-2qTrcsbeFe1ZUUMRtzeXFY"
+    },
+    "CNA-politics": {
+        "vector_store_id": "vs_686777c267288191bc83d2b1e5784982",
+        "file_id": "file-Wgow84zhvAP5GxgFPCiZsz"
+    },
+    "CNA-video": {
+        "vector_store_id": "vs_68b1259201a08191b03fdc7f8a7448f0",
+        "file_id": "file-R3yWKTZaYe4T4fsNQGnA4P"
+    },
+    "NDX-trail": {
+        "vector_store_id": "vs_68aff8013fcc8191b2f49dd3ce7c393f",
+        "file_id": "file-STT7xPsgJvYh9QaAgeHQBZ"
+    }
+}
