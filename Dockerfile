@@ -32,4 +32,4 @@ RUN chmod +x /app
 EXPOSE $PORT
 
 # 使用 functions-framework 運行應用
-CMD exec functions-framework --target main.agentic_flow --port $PORT
+CMD exec functions-framework --target agentic_flow --port $PORT
