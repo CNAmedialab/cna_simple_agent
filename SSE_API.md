@@ -23,7 +23,7 @@ Accept: text/event-stream
 ## 基本格式
 所有 SSE 訊息遵循以下格式：
 ```
-data: {"Result": "Y|N", "Message": "訊息類型", "ResultData": {...}}
+{"Result": "Y|N", "Message": "訊息類型", "ResultData": {...}}
 ```
 
 - `Result`: "Y" 表示成功，"N" 表示錯誤
@@ -36,17 +36,17 @@ data: {"Result": "Y|N", "Message": "訊息類型", "ResultData": {...}}
 
 ### API Key 驗證失敗
 ```json
-data: {"Result": "N", "Message": "OpenAI API KEY 設定失敗", "ResultData": ""}
+{"Result": "N", "Message": "OpenAI API KEY 設定失敗", "ResultData": ""}
 ```
 
 ### 輸入驗證錯誤
 ```json
-data: {"Result": "N", "Message": "沒有提供訊息、訊息長度不夠", "ResultData": ""}
+{"Result": "N", "Message": "沒有提供訊息、訊息長度不夠", "ResultData": ""}
 ```
 
 ### 權限不足
 ```json
-data: {"Result": "N", "Message": "無權限使用 {media_name} 或 API key 不存在", "ResultData": ""}
+{"Result": "N", "Message": "無權限使用 {media_name} 或 API key 不存在", "ResultData": ""}
 ```
 
 ---
@@ -55,7 +55,7 @@ data: {"Result": "N", "Message": "無權限使用 {media_name} 或 API key 不�
 
 ### 1. 譯名處理
 ```json
-data: {"Result": "Y", "Message": "譯名處理完成", "ResultData": {"name1": "translation1", "name2": "translation2"}}
+{"Result": "Y", "Message": "譯名處理完成", "ResultData": {"name1": "translation1", "name2": "translation2"}}
 ```
 - 包含人名、地名等專有名詞的翻譯對照表
 
@@ -63,34 +63,34 @@ data: {"Result": "Y", "Message": "譯名處理完成", "ResultData": {"name1": "
 
 #### 2.1 編輯建議 (Streaming)
 ```json
-data: {"Result": "Y", "Message": "edit_advice_streaming", "ResultData": {"delta": "建"}}
-data: {"Result": "Y", "Message": "edit_advice_streaming", "ResultData": {"delta": "議"}}
-data: {"Result": "Y", "Message": "edit_advice_streaming", "ResultData": {"delta": "內"}}
+{"Result": "Y", "Message": "edit_advice_streaming", "ResultData": {"delta": "建"}}
+{"Result": "Y", "Message": "edit_advice_streaming", "ResultData": {"delta": "議"}}
+{"Result": "Y", "Message": "edit_advice_streaming", "ResultData": {"delta": "內"}}
 ```
 - 編輯建議內容會逐字符串流輸出
 - `delta` 為單個字符
 
 #### 2.2 查核點完成
 ```json
-data: {"Result": "Y", "Message": "check_points 完成", "ResultData": {"Result": "Y", "ResultData": {"check_points": ["川普是否真的與蒲亭在阿拉斯加州會面", "川普與蒲亭的『交情』真實性", "川普聲稱的『降低俄烏戰爭死亡人數』計畫是否屬實", "川普對蒲亭『極其失望』的背景與脈絡", "川普推動俄烏領袖會談的實際進展"]}, "Message": "API成功回傳結果"}}
+{"Result": "Y", "Message": "check_points 完成", "ResultData": {"Result": "Y", "ResultData": {"check_points": ["川普是否真的與蒲亭在阿拉斯加州會面", "川普與蒲亭的『交情』真實性", "川普聲稱的『降低俄烏戰爭死亡人數』計畫是否屬實", "川普對蒲亭『極其失望』的背景與脈絡", "川普推動俄烏領袖會談的實際進展"]}, "Message": "API成功回傳結果"}}
 ```
 
 - `check_points` 是字串陣列，每個元素為一個查核要點
 
 **失敗情況**：
 ```json
-data: {"Result": "Y", "Message": "check_points 失敗，使用預設值", "ResultData": {"Result": "N", "ResultData": {"check_points": None}, "Message": "API超時或錯誤"}}
+{"Result": "Y", "Message": "check_points 失敗，使用預設值", "ResultData": {"Result": "N", "ResultData": {"check_points": None}, "Message": "API超時或錯誤"}}
 ```
 
 ### 3. 最終改稿結果 (Streaming)
 
 #### 3.1 標記文本串流
 ```json
-data: {"Result": "Y", "Message": "marked_output_streaming", "ResultData": {"delta": "美"}}
-data: {"Result": "Y", "Message": "marked_output_streaming", "ResultData": {"delta": "國"}}
-data: {"Result": "Y", "Message": "marked_output_streaming", "ResultData": {"delta": "/@"}}
-data: {"Result": "Y", "Message": "marked_output_streaming", "ResultData": {"delta": "總"}}
-data: {"Result": "Y", "Message": "marked_output_streaming", "ResultData": {"delta": "統"}}
+{"Result": "Y", "Message": "marked_output_streaming", "ResultData": {"delta": "美"}}
+{"Result": "Y", "Message": "marked_output_streaming", "ResultData": {"delta": "國"}}
+{"Result": "Y", "Message": "marked_output_streaming", "ResultData": {"delta": "/@"}}
+{"Result": "Y", "Message": "marked_output_streaming", "ResultData": {"delta": "總"}}
+{"Result": "Y", "Message": "marked_output_streaming", "ResultData": {"delta": "統"}}
 ```
 - 改稿後的標記文本會逐字符串流輸出
 - 標記格式：`/@修改後的內容@/` 表示已修改的部分
@@ -98,7 +98,7 @@ data: {"Result": "Y", "Message": "marked_output_streaming", "ResultData": {"delt
 
 #### 3.2 參考資料列表
 ```json
-data: {"Result": "Y", "Message": "source_url_list", "ResultData": {"source_url_list": ["url1", "url2"]}}
+{"Result": "Y", "Message": "source_url_list", "ResultData": {"source_url_list": ["url1", "url2"]}}
 ```
 
 ---
@@ -107,22 +107,22 @@ data: {"Result": "Y", "Message": "source_url_list", "ResultData": {"source_url_l
 
 ### 任務失敗
 ```json
-data: {"Result": "Y", "Message": "edit_advice 失敗，使用預設值", "ResultData": {"task": "edit_advice", "error": "錯誤原因"}}
+{"Result": "Y", "Message": "edit_advice 失敗，使用預設值", "ResultData": {"task": "edit_advice", "error": "錯誤原因"}}
 ```
 
 ### 處理錯誤
 ```json
-data: {"Result": "N", "Message": "處理錯誤: 錯誤描述", "ResultData": ""}
+{"Result": "N", "Message": "處理錯誤: 錯誤描述", "ResultData": ""}
 ```
 
 ### 處理超時
 ```json
-data: {"Result": "N", "Message": "處理超時", "ResultData": ""}
+{"Result": "N", "Message": "處理超時", "ResultData": ""}
 ```
 
 ### 系統錯誤
 ```json
-data: {"Result": "N", "Message": "處理過程發生錯誤: 錯誤描述", "ResultData": {"error": "錯誤訊息", "traceback": "詳細錯誤堆疊"}}
+{"Result": "N", "Message": "處理過程發生錯誤: 錯誤描述", "ResultData": {"error": "錯誤訊息", "traceback": "詳細錯誤堆疊"}}
 ```
 
 ---
