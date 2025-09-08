@@ -6,8 +6,9 @@
 
 ## API 端點
 ```
-POST /agentic_flow
+POST https://cna-simple-agent-1007110536706.asia-east1.run.app/
 Content-Type: application/json
+Accept: text/event-stream
 ```
 
 ## 請求參數
@@ -71,7 +72,14 @@ data: {"Result": "Y", "Message": "edit_advice_streaming", "ResultData": {"delta"
 
 #### 2.2 查核點完成
 ```json
-data: {"Result": "Y", "Message": "check_points 完成", "ResultData": {"Result": "Y", "Message": "查核完成"}}
+data: {"Result": "Y", "Message": "check_points 完成", "ResultData": {"Result": "Y", "ResultData": {"check_points": ["川普是否真的與蒲亭在阿拉斯加州會面", "川普與蒲亭的『交情』真實性", "川普聲稱的『降低俄烏戰爭死亡人數』計畫是否屬實", "川普對蒲亭『極其失望』的背景與脈絡", "川普推動俄烏領袖會談的實際進展"]}, "Message": "API成功回傳結果"}}
+```
+
+- `check_points` 是字串陣列，每個元素為一個查核要點
+
+**失敗情況**：
+```json
+data: {"Result": "Y", "Message": "check_points 失敗，使用預設值", "ResultData": {"Result": "N", "ResultData": {"check_points": None}, "Message": "API超時或錯誤"}}
 ```
 
 ### 3. 最終改稿結果 (Streaming)
@@ -138,7 +146,7 @@ data: {"Result": "N", "Message": "處理過程發生錯誤: 錯誤描述", "Resu
 ```javascript
 // Google Extension API 調用函數
 async function processNewsWithAPI(newsContent, mediaName = "CNA-medialab") {
-    const API_ENDPOINT = "https://your-api-domain.com/agentic_flow";
+    const API_ENDPOINT = "https://cna-simple-agent-1007110536706.asia-east1.run.app/";
     
     const requestData = {
         input_text: newsContent,
