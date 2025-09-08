@@ -193,3 +193,4 @@ config.json
 
 # Custom additions for your project
 # Add any project-specific files or directories you want to ignore below
+test.py
