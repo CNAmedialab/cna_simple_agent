@@ -481,9 +481,19 @@ def generate_rewrite_prompt(edit_role: str, edit_mode: str, output_format: str, 
     """
     import prompts
     
+    # 映射前端簡短名稱到完整變數名
+    mode_mapping = {
+        'less': 'less_mode',
+        'medium': 'medium_mode', 
+        'full': 'full_mode'
+    }
+    
+    # 如果 edit_mode 在映射表中，使用映射後的名稱
+    actual_edit_mode = mode_mapping.get(edit_mode, edit_mode)
+    
     # 從 prompts 模組取得對應變數
     roles = getattr(prompts, edit_role)
-    mode_instruction = getattr(prompts, edit_mode) 
+    mode_instruction = getattr(prompts, actual_edit_mode) 
     output_format_content = getattr(prompts, output_format)
     
     return f"""
